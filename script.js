@@ -3,8 +3,6 @@ let playerSelection;
 
 playerPlay();
 computerPlay();
-console.log(playerSelection);
-console.log(computerSelection);
 console.log(playRound(playerSelection, computerSelection));
 
 function computerPlay() {
@@ -22,7 +20,8 @@ function computerPlay() {
 
 function playerPlay() {
     playerSelection = prompt("Rock, Paper, or Scissors?");
-    playerSelection = playerSelection.toLowerCase(); 
+    playerSelection = playerSelection.toLowerCase();
+    //Should put something in here to validate entry 
 }
 
 function playRound(playerSelection, computerSelection) {
