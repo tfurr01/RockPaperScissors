@@ -1,0 +1,19 @@
+.header {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    width: 200px;
+    height: 200px;
+    margin: 50px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 2px grey;
+    background: #07f246;
+}
+
