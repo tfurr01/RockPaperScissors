@@ -1,7 +1,14 @@
+body {
+    background-color: #3cca3c;
+    font-family: papyrus;
+}
+
 .header {
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 100px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-size: 300%;
+    font-weight: bold;
 }
 .container {
     display: flex;
@@ -14,6 +21,34 @@
     margin: 50px;
     border-radius: 10px;
     box-shadow: 3px 3px 2px grey;
-    background: #07f246;
 }
 
+.displayResults {
+    text-align: center;
+    margin: 1em;
+}
+
+#rock {
+    background-color: #888c8d;
+}
+
+#paper {
+    background-color: #f2eecb;
+}
+
+#scissors {
+    background-color: #aaa9ad;
+}
+
+#refreshBtn {
+    font-family: papyrus;
+    background-color: #A47449;
+    width: 150px;
+    height: 50px;
+    box-shadow: 3px 3px 2px grey;
+}
+
+#winner {
+    font-weight: bold;
+    font-size: 200%;
+}

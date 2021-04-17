@@ -2,14 +2,25 @@ let computerSelection;
 let playerSelection;
 let result;
 let runningScore;
+let winner;
 let playerScore = 0;
 let computerScore = 0;
 let ties = 0;
 let score = document.getElementById('score');
+let playAgain = document.createElement('BUTTON');
 const rock = document.getElementById('rock');
 const paper = document.getElementById('paper');
 const scissors = document.getElementById('scissors');
-const gameResult = document.getElementById('gameResult'); 
+const gameResult = document.getElementById('gameResult');
+const matchWinner = document.getElementById('winner');
+const refresh = document.getElementById('playAgain');
+
+rock.addEventListener("click", clickRock);
+
+paper.addEventListener("click", clickPaper);
+
+scissors.addEventListener("click", clickScissors);
+
 function clickRock() {
     //clear text from previous game
     if (gameResult.hasChildNodes()) {
@@ -59,25 +70,29 @@ function clickPaper() {
         gameOver();
     }
 }
-
-
-
-
-
-
-rock.addEventListener("click", clickRock);
-
-paper.addEventListener("click", clickPaper);
-
-scissors.addEventListener("click", clickScissors);
-
 function gameOver () {
-    console.log("game over");
+    //remove click functionality
     paper.removeEventListener("click", clickPaper);
     scissors.removeEventListener("click", clickScissors);
     rock.removeEventListener("click", clickRock);
+    //determine winner and announce
+    if (playerScore > computerScore) {
+        winner = document.createTextNode("You have defeated the computer! Congratulations!");
+        matchWinner.appendChild(winner);
+    }
+    else {
+        winner = document.createTextNode("You have been defeated by the computer! Better luck next time!");
+        matchWinner.appendChild(winner);
+    }
+    //give option to play again
+    playAgain.textContent = 'Play Again?';
+    playAgain.setAttribute('id', 'refreshBtn');
+    refresh.appendChild(playAgain);
+    refresh.addEventListener("click", function() {
+        location.reload();
+        return false;
+    })
 }
-
 function computerPlay() {
     computerSelection = Math.random();
     if (computerSelection < .334) {
@@ -90,7 +105,6 @@ function computerPlay() {
         computerSelection = 'scissors'
     }
 }
-
 function playRound(playerSelection, computerSelection) {
     
     
