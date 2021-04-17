@@ -3,6 +3,7 @@ let playerSelection;
 let result;
 let runningScore;
 let winner;
+let roundResultText;
 let playerScore = 0;
 let computerScore = 0;
 let ties = 0;
@@ -11,6 +12,7 @@ let playAgain = document.createElement('BUTTON');
 const rock = document.getElementById('rock');
 const paper = document.getElementById('paper');
 const scissors = document.getElementById('scissors');
+const roundResult = document.getElementById('roundResult');
 const gameResult = document.getElementById('gameResult');
 const matchWinner = document.getElementById('winner');
 const refresh = document.getElementById('playAgain');
@@ -30,8 +32,16 @@ function clickRock() {
     if (score.hasChildNodes()) {
         score.removeChild(runningScore);
     }
+    //remove old round results
+    if (roundResult.hasChildNodes()) {
+        roundResult.removeChild(roundResultText);
+    }
     playerSelection = 'rock';
     computerPlay();
+    //display selections
+    roundResultText = document.createTextNode(`${playerSelection} vs ${computerSelection}`);
+    roundResult.appendChild(roundResultText);
+
     playRound(playerSelection, computerSelection);
     //ending game if one of the scores gets to 5
     if (playerScore === 5 || computerScore === 5){
@@ -46,8 +56,16 @@ function clickScissors() {
     if (score.hasChildNodes()) {
         score.removeChild(runningScore);
     }
+    //remove old round results
+    if (roundResult.hasChildNodes()) {
+        roundResult.removeChild(roundResultText);
+    }
     playerSelection = 'scissors';
     computerPlay();
+    //display selections
+    roundResultText = document.createTextNode(`${playerSelection} vs ${computerSelection}`);
+    roundResult.appendChild(roundResultText);
+
     playRound(playerSelection, computerSelection);
 
     if (playerScore === 5 || computerScore === 5){
@@ -62,8 +80,16 @@ function clickPaper() {
     if (score.hasChildNodes()) {
         score.removeChild(runningScore);
     }
+    //remove old round results
+    if (roundResult.hasChildNodes()) {
+        roundResult.removeChild(roundResultText);
+    }
     playerSelection = 'paper';
     computerPlay();
+    //display selections
+    roundResultText = document.createTextNode(`${playerSelection} vs ${computerSelection}`);
+    roundResult.appendChild(roundResultText);
+
     playRound(playerSelection, computerSelection);
 
     if (playerScore === 5 || computerScore === 5){
@@ -152,8 +178,6 @@ function playRound(playerSelection, computerSelection) {
             ties++;
         }
     }
-
-
 
     gameResult.appendChild(result);    
     runningScore = document.createTextNode(`${playerScore} wins, ${computerScore} losses, and ${ties} ties`);
